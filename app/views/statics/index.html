@@ -1,0 +1,19 @@
+<div id="app">
+  <h1 v-bind:title="msg2">{{ msg }}</h1>
+  <input v-model="msg">
+
+  <p v-if="seen">U can see me</p>
+  <ul>
+    <li v-for="todo in todos">
+      {{ todo.text }}
+    </li>
+  </ul>
+  <button v-on:click="pushTodolist" v-bind:disabled="seen">R message</button>
+  <br>
+  <button v-on:click="setPushTodoListClass">SetClass</button>
+
+  <ol>
+    <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+  </ol>
+</div>
+
