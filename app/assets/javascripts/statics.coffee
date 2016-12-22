@@ -1,14 +1,13 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-$ ->
+
+$ ->  
+
   Vue.component('todo-item', {
     props: ['todo'],
     template: '<li>{{ todo.text }}</li>'
   })
-
-  app1 = new Vue({})
-  app2 = new Vue({})
 
   app3 = new Vue({
     el: '#app'
@@ -31,7 +30,17 @@ $ ->
 
     methods:
       pushTodolist: ->
-        this.todos.push({text: "new text"})
+        # this.todos.push({text: this.msg})
+        $.ajax({
+          url: '/statics/vid'
+          data:
+            content: this.msg
+          })
+        this.msg = ''
+
+      pushTodolistItem: (content) ->
+        this.todos.push({text: content})        
+
 
       setPushTodoListClass: ->
         this.seen = if this.seen == true then false else true
@@ -42,3 +51,5 @@ $ ->
 
 
   })
+
+  app1 = new UserChat(app3)
